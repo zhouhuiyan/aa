@@ -7,6 +7,8 @@ var logger = require('morgan');
 //
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var artRouter = require('./routes/art');
+var typeRouter = require('./routes/type');
 
 var app = express();
 
@@ -16,6 +18,7 @@ var baseDate = require('./db/config');
 var $sql = mysql.createConnection(baseDate.mysql);
 // $sql.connect();
 
+//解决跨域问题
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
@@ -34,8 +37,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//路由---接口地址
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/art',artRouter);
+app.use('/type',typeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

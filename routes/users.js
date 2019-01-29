@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/user', function(req, res, next) {
-  $aa.query('select * from test',function(error,result,fieleds){
+  $aa.query('select * from user',function(error,result,fieleds){
     if(error) throw error;
     res.json(result);
   })
