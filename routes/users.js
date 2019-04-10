@@ -28,7 +28,14 @@ router.get('/', function(req, res, next) {
 router.get('/user', function(req, res, next) {
   $aa.query('select * from user',function(error,result,fieleds){
     if(error) throw error;
-    res.json(result);
+    var data={
+      status:{
+        code:0,
+        message:'请求成功',
+      },
+      data:result
+    }
+    res.json(data);
   })
   // res.json({
   //   name: 'ddafdasfd11'
