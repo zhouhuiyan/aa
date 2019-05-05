@@ -37,9 +37,6 @@ router.get('/user', function(req, res, next) {
     }
     res.json(data);
   })
-  // res.json({
-  //   name: 'ddafdasfd11'
-  // })
 });
 
 module.exports = router;
