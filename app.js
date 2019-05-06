@@ -6,9 +6,10 @@ var logger = require('morgan');
 
 //
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var artRouter = require('./routes/art');
-var typeRouter = require('./routes/type');
+var usersRouter = require('./routes/s-users');
+var artRouter = require('./routes/s-art');
+var typeRouter = require('./routes/s-type');
+var reviewRouter = require('./routes/s-review');
 
 var app = express();
 
@@ -40,9 +41,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //路由---接口地址
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/art',artRouter);
-app.use('/type',typeRouter);
+app.use('/system/users', usersRouter);
+app.use('/system/art',artRouter);
+app.use('/system/type',typeRouter);
+app.use('/system/review',reviewRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
