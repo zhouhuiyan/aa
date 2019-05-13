@@ -11,6 +11,11 @@ var artRouter = require('./routes/s-art');
 var typeRouter = require('./routes/s-type');
 var reviewRouter = require('./routes/s-review');
 
+var pusersRouter = require('./routes/p-users');
+var partRouter = require('./routes/p-art');
+var ptypeRouter = require('./routes/p-type');
+var previewRouter = require('./routes/p-review');
+
 var app = express();
 
 var mysql = require('mysql');
@@ -45,6 +50,11 @@ app.use('/system/users', usersRouter);
 app.use('/system/art',artRouter);
 app.use('/system/type',typeRouter);
 app.use('/system/review',reviewRouter);
+
+app.use('/users', pusersRouter);
+app.use('/art',partRouter);
+app.use('/type',ptypeRouter);
+app.use('/review',previewRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
